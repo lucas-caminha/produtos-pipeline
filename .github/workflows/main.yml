@@ -8,8 +8,15 @@ jobs:
   CI:
     runs-on: ubuntu-latest
     steps:
-      - name: Step 01
-        run: echo "Build da imagem"
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v5.3.0
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: 
+            caminha/produto-actions:v1
+            caminha/produto-actions:latest
       - name: Step 02
         run: echo "Publish da imagem"  
         
